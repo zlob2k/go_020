@@ -7,11 +7,9 @@ import (
 	"net/http"
 	"os"
 
-	//database "command-line-argumentsC:\\Users\\YURA_MSI510\\go\\src\\go_020\\internal\\adapters\\postrepo\\database\\post_repo.go"
 	database "example.com/zlob2k/go_020/internal/adapters/postrepo/database"
 	blog "example.com/zlob2k/go_020/internal/core/blog"
 	web "example.com/zlob2k/go_020/internal/ui/web"
-	//app "example.com/zlob2k/go_020/internal/app"
 )
 
 type Context struct {
@@ -26,7 +24,7 @@ func NewContext() *Context {
 	fmt.Printf("\nNewContext()")
 	return &Context{
 		DbPsw:      os.Getenv("DB_LINK_PSW"),
-		DbUsr:      os.Getenv("DB_LINK_USR"), //env.GetString("TEMPLATE_PATH", filepath.Join("web", "template")),
+		DbUsr:      os.Getenv("DB_LINK_USR"), 
 		DbAddr:     "http://localhost:5432",
 		DbType:     "postgres",
 		ServerAddr: "127.0.0.1:443",
