@@ -10,7 +10,6 @@ type PostRepo struct {
 }
 
 func NewPostRepo(DbPsw, DbUsr, DbAddr, DbType string) *PostRepo {
-	fmt.Printf("\nNewPostRepo() DbAddr=%s", DbAddr)
 	return &PostRepo{DbAddr: DbAddr}
 }
 
