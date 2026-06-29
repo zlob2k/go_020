@@ -1,7 +1,5 @@
 База данных Postgres по адресу: 127.0.0.1:5432/links , таблица t_links2
 
-Файл с исходником: 'go_016.go'
-
 Создание короткой ссылки POST /links Request { "url": "https://example.com/some/very/long/url" }
 
 Response { "short_code": "abc123" }
