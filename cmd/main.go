@@ -14,4 +14,5 @@ func main() {
 	if err != nil {
 		log.Fatalf("\nError starting server %s \n%v", context.ServerAddr, err)
 	}
+	defer context.Shutdown()
 }
