@@ -1,21 +1,30 @@
 package web
 
+// internal/ui/web
+
 import (
 	"fmt"
 	"net/http"
+
+	model "example.com/zlob2k/go_020/internal/model"
 )
 
-// internal/ui/web
+func NewRouter(usecases *UseCases, dbparam model.Tdbparam) http.Handler {
 
-func NewRouter(usecases *UseCases, db_addr string) http.Handler {
+	const op = "NewRouter()"
+	fmt.Printf("\n%s", op)
+
 	mux := http.NewServeMux()
 
-	H_PostLinksHandler := NewPostLinksHandler(usecases.PostLinks, db_addr)
-	H_GetLinksIdHandler := NewGetLinksIdHandler(usecases.GetLinksId, db_addr)
+	H_PostLinksHandler := NewPostLinksHandler(usecases.PostLinks, dbparam)
+	H_GetLinksIdHandler := NewGetLinksIdHandler(usecases.GetLinksId, dbparam)
 
-	http.HandleFunc("/links", H_PostLinksHandler.ServeHTTP)
-	http.HandleFunc("/links/{id}", H_GetLinksIdHandler.ServeHTTP)
+	mux.Handle("/links", H_PostLinksHandler)
+	mux.Handle("/links/{id}", H_GetLinksIdHandler)
 
-	fmt.Printf("\nNewRouter()")
+	//mux.Handle("/links", H_PostLinksHandler.ServeHTTP)
+	//mux.Handle("/links/{id}", H_GetLinksIdHandler.ServeHTTP)
+
 	return mux
+
 }

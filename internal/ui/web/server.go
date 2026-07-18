@@ -13,7 +13,7 @@ type Server struct {
 }
 
 func NewServer(server_addr string, router http.Handler) *Server {
-	fmt.Printf("\n NewServer()")
+	fmt.Printf("\nNewServer()")
 	return &Server{
 		ServerAddr: server_addr,
 		Router:     router,
@@ -21,7 +21,7 @@ func NewServer(server_addr string, router http.Handler) *Server {
 }
 
 func (s *Server) Start() error {
-	fmt.Printf("\n Start()")
-	fmt.Printf("\n ServerAddr = %s", s.ServerAddr)
-	return http.ListenAndServe(s.ServerAddr, s.Router)
+	fmt.Printf("\nStart() ServerAddr = %s", s.ServerAddr)
+	err := http.ListenAndServe(s.ServerAddr, s.Router)
+	return err
 }
